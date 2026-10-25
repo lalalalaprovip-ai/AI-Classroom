@@ -1,0 +1,17 @@
+# Netlify: website tĩnh, không cần build. Publish thư mục gốc.
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Cho phép camera & micro trên chính trang web này (bắt buộc để chụp đề và nói thành chữ)
+    Permissions-Policy = "camera=(self), microphone=(self), geolocation=()"
+
+[[headers]]
+  for = "/public/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
